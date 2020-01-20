@@ -1,6 +1,6 @@
 p{
-  color: green
+  color: green;
 }
-.active{
-  color: red
+.active > a{
+  color: red;
 }
