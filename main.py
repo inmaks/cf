@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, json, jsonify
 from file_prc import read_file, write_file
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -47,6 +48,14 @@ def fileWork():
     return write_to_file()
   else:
     return f"Invalid request {request.method} not allowed"
+
+@app.route('/json')
+def json_get():
+  list = []
+  list.append("value1")
+  list.append("value2")
+  list.append("value3")
+  return jsonify({"data":list})
 
 if __name__ == '__main__':
   app.run(host="0.0.0.0", threaded=True, port=5000, debug=True)
